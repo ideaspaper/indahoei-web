@@ -1,0 +1,49 @@
+{
+  "name": "indahoei",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier '**/*.{js,ts,tsx,json,md,html,css}' --write",
+    "prepare": "npm run set-scripts-permission && npm run apply-hooks",
+    "set-scripts-permission": "chmod +x scripts/apply-git-hooks.sh && chmod +x scripts/git-hooks/*",
+    "apply-hooks": "./scripts/apply-git-hooks.sh",
+    "test": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.8.0",
+    "@commitlint/config-conventional": "19.8.0",
+    "@eslint/js": "9.22.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@types/node": "22.14.1",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
+    "@vitejs/plugin-react": "4.3.4",
+    "@vitest/coverage-v8": "3.1.1",
+    "@vitest/ui": "3.1.1",
+    "eslint": "9.22.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-prettier": "5.2.6",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-refresh": "0.4.19",
+    "globals": "16.0.0",
+    "jsdom": "26.1.0",
+    "prettier": "3.5.3",
+    "typescript": "5.7.2",
+    "typescript-eslint": "8.26.1",
+    "vite": "6.3.1",
+    "vitest": "3.1.1"
+  }
+}

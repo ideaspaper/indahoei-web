@@ -1,0 +1,31 @@
+#!/bin/bash
+
+printf "Running pre-commit hook\n"
+
+commit_fail() {
+    printf "Commit failed\n"
+    exit 1
+}
+
+run_command() {
+    printf "> Running %s\n" "$1"
+    eval "$1"
+    if [[ $? != 0 ]]; then
+        commit_fail
+    fi
+}
+
+set -e
+
+run_command "npm run format"
+run_command "npm run lint"
+run_command "npm run test"
+
+staged_files=$(git diff --cached --name-only --diff-filter=ACMR)
+if [[ -n "$staged_files" ]]; then
+    echo "$staged_files" | sed 's| |\\ |g' | xargs git add
+else
+    echo "No staged files to re-add."
+fi
+
+printf "Done\n"
