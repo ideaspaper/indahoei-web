@@ -1,15 +1,10 @@
+import {ReactNode} from 'react';
 import {Link} from 'react-router';
 
 import {ContainerInner, ContainerOuter} from '@/components/container';
 import {APP_PATH_MAP} from '@/config/paths';
 
-const NavLink = ({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) => {
+const NavLink = ({href, children}: {href: string; children: ReactNode}) => {
   return (
     <Link
       to={href}

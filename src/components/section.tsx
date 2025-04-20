@@ -1,11 +1,11 @@
-import {useId} from 'react';
+import {ReactNode, useId} from 'react';
 
 export const Section = ({
   title,
   children,
 }: {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const id = useId();
 

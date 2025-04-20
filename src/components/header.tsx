@@ -5,7 +5,15 @@ import {
   PopoverPanel,
 } from '@headlessui/react';
 import clsx from 'clsx';
-import {useEffect, useRef, useState} from 'react';
+import {
+  ComponentPropsWithoutRef,
+  ComponentRef,
+  CSSProperties,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import {Link, NavLink, useLocation} from 'react-router';
 
 import {useTheme} from '@/app/contexts/theme-context';
@@ -13,7 +21,7 @@ import avatarImage from '@/assets/indahoei.jpeg';
 import {Container} from '@/components/container';
 import {APP_PATH_MAP} from '@/config/paths';
 
-const CloseIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
+const CloseIcon = (props: ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -28,7 +36,7 @@ const CloseIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   );
 };
 
-const ChevronDownIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
+const ChevronDownIcon = (props: ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
       <path
@@ -42,7 +50,7 @@ const ChevronDownIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   );
 };
 
-const SunIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
+const SunIcon = (props: ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -61,7 +69,7 @@ const SunIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   );
 };
 
-const MoonIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
+const MoonIcon = (props: ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -79,7 +87,7 @@ const MobileNavItem = ({
   children,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   return (
     <li>
@@ -90,9 +98,7 @@ const MobileNavItem = ({
   );
 };
 
-const MobileNavigation = (
-  props: React.ComponentPropsWithoutRef<typeof Popover>,
-) => {
+const MobileNavigation = (props: ComponentPropsWithoutRef<typeof Popover>) => {
   return (
     <Popover {...props}>
       <PopoverButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -137,7 +143,7 @@ const MobileNavigation = (
   );
 };
 
-const NavItem = ({to, children}: {to: string; children: React.ReactNode}) => {
+const NavItem = ({to, children}: {to: string; children: ReactNode}) => {
   const location = useLocation();
   const isActive = location.pathname === to;
 
@@ -163,7 +169,7 @@ const NavItem = ({to, children}: {to: string; children: React.ReactNode}) => {
   );
 };
 
-const DesktopNavigation = (props: React.ComponentPropsWithoutRef<'nav'>) => {
+const DesktopNavigation = (props: ComponentPropsWithoutRef<'nav'>) => {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
@@ -207,7 +213,7 @@ const clamp = (number: number, a: number, b: number) => {
 const AvatarContainer = ({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<'div'>) => {
+}: ComponentPropsWithoutRef<'div'>) => {
   return (
     <div
       className={clsx(
@@ -223,7 +229,7 @@ const Avatar = ({
   large = false,
   className,
   ...props
-}: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
+}: Omit<ComponentPropsWithoutRef<typeof Link>, 'href'> & {
   large?: boolean;
 }) => {
   return (
@@ -249,8 +255,8 @@ export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
-  const headerRef = useRef<React.ComponentRef<'div'>>(null);
-  const avatarRef = useRef<React.ComponentRef<'div'>>(null);
+  const headerRef = useRef<ComponentRef<'div'>>(null);
+  const avatarRef = useRef<ComponentRef<'div'>>(null);
   const isInitial = useRef(true);
 
   useEffect(() => {
@@ -371,15 +377,14 @@ export const Header = () => {
             <Container
               className="top-0 order-last -mb-3 pt-3"
               style={{
-                position:
-                  'var(--header-position)' as React.CSSProperties['position'],
+                position: 'var(--header-position)' as CSSProperties['position'],
               }}
             >
               <div
                 className="top-(--avatar-top,--spacing(3)) w-full"
                 style={{
                   position:
-                    'var(--header-inner-position)' as React.CSSProperties['position'],
+                    'var(--header-inner-position)' as CSSProperties['position'],
                 }}
               >
                 <div className="relative">
@@ -405,15 +410,14 @@ export const Header = () => {
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
           style={{
-            position:
-              'var(--header-position)' as React.CSSProperties['position'],
+            position: 'var(--header-position)' as CSSProperties['position'],
           }}
         >
           <Container
             className="top-(--header-top,--spacing(6)) w-full"
             style={{
               position:
-                'var(--header-inner-position)' as React.CSSProperties['position'],
+                'var(--header-inner-position)' as CSSProperties['position'],
             }}
           >
             <div className="relative flex gap-4">

@@ -1,3 +1,5 @@
+import {ReactNode} from 'react';
+
 import {Container} from '@/components/container';
 
 export const SimpleLayout = ({
@@ -7,7 +9,7 @@ export const SimpleLayout = ({
 }: {
   title: string;
   intro: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }) => {
   return (
     <Container className="mt-16 sm:mt-32">

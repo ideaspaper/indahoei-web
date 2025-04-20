@@ -2,23 +2,27 @@ import {Helmet} from '@dr.pogodin/react-helmet';
 
 import portraitImage from '@/assets/indahoei.jpeg';
 import {
-  GitHubIcon,
+  YouTubeIcon,
   InstagramIcon,
-  LinkedInIcon,
-  XIcon,
-} from '@/components/social-icons';
-import {MailIcon} from '@/features/about/components/mail-icon';
-import {SocialLink} from '@/features/about/components/social-link';
+  TikTokIcon,
+  MailIcon,
+} from '@/components/icons';
+import {SocialLink} from '@/components/social-link';
 
 export const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Spencer Sharp - Designing the Future</title>
+        <title>Indah Oei - A Little About Me</title>
         <meta
           name="description"
-          content="Learn more about Spencer Sharp, a designer based in New York City who is passionate about creating innovative and future-forward designs at Planetaria."
+          content="Get to know Indah Oei! Learn about the artist behind the whimsical illustrations, her background, inspirations, and journey as a Jakarta-based creator."
         />
+        <meta
+          name="keywords"
+          content="Indah Oei, about me, introduction, artist, illustrator, Jakarta, background, inspiration, journey, personal"
+        />
+        <meta name="author" content="Indah Oei" />
       </Helmet>
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
@@ -33,8 +37,8 @@ export const About = () => {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Spencer Sharp. I live in New York City, where I design the
-            future.
+            I am Indah Oei, an illustrator based in Jakarta, painting the
+            landscapes of my dreams.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
@@ -67,17 +71,29 @@ export const About = () => {
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="#" icon={XIcon}>
-              Follow on X
-            </SocialLink>
-            <SocialLink href="#" icon={InstagramIcon} className="mt-4">
+            <SocialLink
+              href="https://www.instagram.com/indahoei"
+              target="_blank"
+              icon={InstagramIcon}
+              className="mt-4"
+            >
               Follow on Instagram
             </SocialLink>
-            <SocialLink href="#" icon={GitHubIcon} className="mt-4">
-              Follow on GitHub
+            <SocialLink
+              href="https://www.tiktok.com/@indah.oei"
+              target="_blank"
+              icon={TikTokIcon}
+              className="mt-2"
+            >
+              Follow on TikTok
             </SocialLink>
-            <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
-              Follow on LinkedIn
+            <SocialLink
+              href="https://youtube.com/@indahoei?si=TV1bca61FmFNhLQk"
+              target='"_blank'
+              icon={YouTubeIcon}
+              className="mt-2"
+            >
+              Follow on YouTube
             </SocialLink>
             <SocialLink
               href="mailto:spencer@planetaria.tech"

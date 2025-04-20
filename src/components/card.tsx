@@ -1,7 +1,8 @@
 import clsx from 'clsx';
+import {ComponentPropsWithoutRef, ElementType, ReactNode} from 'react';
 import {Link} from 'react-router';
 
-const ChevronRightIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
+const ChevronRightIcon = (props: ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
@@ -14,11 +15,11 @@ const ChevronRightIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   );
 };
 
-export const Card = <T extends React.ElementType = 'div'>({
+export const Card = <T extends ElementType = 'div'>({
   as,
   className,
   children,
-}: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'className'> & {
+}: Omit<ComponentPropsWithoutRef<T>, 'as' | 'className'> & {
   as?: T;
   className?: string;
 }) => {
@@ -33,10 +34,7 @@ export const Card = <T extends React.ElementType = 'div'>({
   );
 };
 
-Card.Link = ({
-  children,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Link>) => {
+Card.Link = ({children, ...props}: ComponentPropsWithoutRef<typeof Link>) => {
   return (
     <>
       <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50" />
@@ -48,11 +46,11 @@ Card.Link = ({
   );
 };
 
-Card.Title = <T extends React.ElementType = 'h2'>({
+Card.Title = <T extends ElementType = 'h2'>({
   as,
   href,
   children,
-}: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'href'> & {
+}: Omit<ComponentPropsWithoutRef<T>, 'as' | 'href'> & {
   as?: T;
   href?: string;
 }) => {
@@ -65,7 +63,7 @@ Card.Title = <T extends React.ElementType = 'h2'>({
   );
 };
 
-Card.Description = ({children}: {children: React.ReactNode}) => {
+Card.Description = ({children}: {children: ReactNode}) => {
   return (
     <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
       {children}
@@ -73,7 +71,7 @@ Card.Description = ({children}: {children: React.ReactNode}) => {
   );
 };
 
-Card.Cta = ({children}: {children: React.ReactNode}) => {
+Card.Cta = ({children}: {children: ReactNode}) => {
   return (
     <div
       aria-hidden="true"
@@ -85,13 +83,13 @@ Card.Cta = ({children}: {children: React.ReactNode}) => {
   );
 };
 
-Card.Eyebrow = <T extends React.ElementType = 'p'>({
+Card.Eyebrow = <T extends ElementType = 'p'>({
   as,
   decorate = false,
   className,
   children,
   ...props
-}: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'decorate'> & {
+}: Omit<ComponentPropsWithoutRef<T>, 'as' | 'decorate'> & {
   as?: T;
   decorate?: boolean;
 }) => {
