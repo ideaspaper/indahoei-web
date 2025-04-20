@@ -1,0 +1,3 @@
+# robots.txt for https://www.indahoei.com/
+
+Sitemap: https://www.indahoei.com/sitemap.xml
