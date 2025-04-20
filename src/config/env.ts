@@ -1,8 +1,8 @@
-import * as z from 'zod';
+import {object, string} from 'zod';
 
 const createEnv = () => {
-  const EnvSchema = z.object({
-    APP_URL: z.string().optional().default('http://localhost:5173'),
+  const EnvSchema = object({
+    APP_URL: string().optional().default('http://localhost:5173'),
   });
 
   const envVars = Object.entries(import.meta.env).reduce<

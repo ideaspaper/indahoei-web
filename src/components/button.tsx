@@ -19,12 +19,12 @@ type ButtonProps = {
   | (ComponentPropsWithoutRef<typeof NavLink> & {to: string; href?: never})
 );
 
-export function Button({
+export const Button = ({
   variant = 'primary',
   className,
   children,
   ...props
-}: ButtonProps) {
+}: ButtonProps) => {
   const combinedClassName = clsx(
     'inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none',
     variantStyles[variant],
@@ -44,4 +44,4 @@ export function Button({
       {children}
     </button>
   );
-}
+};

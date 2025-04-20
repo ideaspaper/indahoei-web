@@ -13,7 +13,7 @@ import avatarImage from '@/assets/indahoei.jpeg';
 import {Container} from '@/components/container';
 import {APP_PATH_MAP} from '@/config/paths';
 
-function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+const CloseIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -26,9 +26,9 @@ function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
     </svg>
   );
-}
+};
 
-function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+const ChevronDownIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
       <path
@@ -40,9 +40,9 @@ function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
     </svg>
   );
-}
+};
 
-function SunIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+const SunIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -59,9 +59,9 @@ function SunIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
     </svg>
   );
-}
+};
 
-function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+const MoonIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -72,15 +72,15 @@ function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
     </svg>
   );
-}
+};
 
-function MobileNavItem({
+const MobileNavItem = ({
   href,
   children,
 }: {
   href: string;
   children: React.ReactNode;
-}) {
+}) => {
   return (
     <li>
       <PopoverButton as={Link} to={href} className="block py-2">
@@ -88,11 +88,11 @@ function MobileNavItem({
       </PopoverButton>
     </li>
   );
-}
+};
 
-function MobileNavigation(
+const MobileNavigation = (
   props: React.ComponentPropsWithoutRef<typeof Popover>,
-) {
+) => {
   return (
     <Popover {...props}>
       <PopoverButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -135,14 +135,9 @@ function MobileNavigation(
       </PopoverPanel>
     </Popover>
   );
-}
+};
 
-interface NavItemProps {
-  to: string;
-  children: React.ReactNode;
-}
-
-function NavItem({to, children}: NavItemProps) {
+const NavItem = ({to, children}: {to: string; children: React.ReactNode}) => {
   const location = useLocation();
   const isActive = location.pathname === to;
 
@@ -166,9 +161,9 @@ function NavItem({to, children}: NavItemProps) {
       </NavLink>
     </li>
   );
-}
+};
 
-function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
+const DesktopNavigation = (props: React.ComponentPropsWithoutRef<'nav'>) => {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
@@ -179,11 +174,10 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
       </ul>
     </nav>
   );
-}
+};
 
-function ThemeToggle() {
+const ThemeToggle = () => {
   const {theme, toggleTheme} = useTheme();
-  // const {resolvedTheme, setTheme} = useTheme();
   const otherTheme = theme === 'dark' ? 'light' : 'dark';
   const [mounted, setMounted] = useState(false);
 
@@ -202,18 +196,18 @@ function ThemeToggle() {
       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400" />
     </button>
   );
-}
+};
 
-function clamp(number: number, a: number, b: number) {
+const clamp = (number: number, a: number, b: number) => {
   const min = Math.min(a, b);
   const max = Math.max(a, b);
   return Math.min(Math.max(number, min), max);
-}
+};
 
-function AvatarContainer({
+const AvatarContainer = ({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<'div'>) {
+}: React.ComponentPropsWithoutRef<'div'>) => {
   return (
     <div
       className={clsx(
@@ -223,15 +217,15 @@ function AvatarContainer({
       {...props}
     />
   );
-}
+};
 
-function Avatar({
+const Avatar = ({
   large = false,
   className,
   ...props
 }: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
   large?: boolean;
-}) {
+}) => {
   return (
     <Link
       aria-label="Home"
@@ -249,14 +243,14 @@ function Avatar({
       />
     </Link>
   );
-}
+};
 
-export function Header() {
+export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
-  const headerRef = useRef<React.ElementRef<'div'>>(null);
-  const avatarRef = useRef<React.ElementRef<'div'>>(null);
+  const headerRef = useRef<React.ComponentRef<'div'>>(null);
+  const avatarRef = useRef<React.ComponentRef<'div'>>(null);
   const isInitial = useRef(true);
 
   useEffect(() => {
@@ -448,4 +442,4 @@ export function Header() {
       )}
     </>
   );
-}
+};

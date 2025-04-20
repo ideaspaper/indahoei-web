@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import {Link} from 'react-router';
 
-function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+const ChevronRightIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
@@ -12,16 +12,16 @@ function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
     </svg>
   );
-}
+};
 
-export function Card<T extends React.ElementType = 'div'>({
+export const Card = <T extends React.ElementType = 'div'>({
   as,
   className,
   children,
 }: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'className'> & {
   as?: T;
   className?: string;
-}) {
+}) => {
   const Component = as ?? 'div';
 
   return (
@@ -31,12 +31,12 @@ export function Card<T extends React.ElementType = 'div'>({
       {children}
     </Component>
   );
-}
+};
 
-Card.Link = function CardLink({
+Card.Link = ({
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Link>) {
+}: React.ComponentPropsWithoutRef<typeof Link>) => {
   return (
     <>
       <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50" />
@@ -48,14 +48,14 @@ Card.Link = function CardLink({
   );
 };
 
-Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
+Card.Title = <T extends React.ElementType = 'h2'>({
   as,
   href,
   children,
 }: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'href'> & {
   as?: T;
   href?: string;
-}) {
+}) => {
   const Component = as ?? 'h2';
 
   return (
@@ -65,11 +65,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   );
 };
 
-Card.Description = function CardDescription({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+Card.Description = ({children}: {children: React.ReactNode}) => {
   return (
     <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
       {children}
@@ -77,7 +73,7 @@ Card.Description = function CardDescription({
   );
 };
 
-Card.Cta = function CardCta({children}: {children: React.ReactNode}) {
+Card.Cta = ({children}: {children: React.ReactNode}) => {
   return (
     <div
       aria-hidden="true"
@@ -89,7 +85,7 @@ Card.Cta = function CardCta({children}: {children: React.ReactNode}) {
   );
 };
 
-Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
+Card.Eyebrow = <T extends React.ElementType = 'p'>({
   as,
   decorate = false,
   className,
@@ -98,7 +94,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
 }: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'decorate'> & {
   as?: T;
   decorate?: boolean;
-}) {
+}) => {
   const Component = as ?? 'p';
 
   return (

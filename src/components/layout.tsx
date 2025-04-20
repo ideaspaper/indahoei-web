@@ -3,7 +3,7 @@ import {Outlet} from 'react-router';
 import {Footer} from '@/components/footer';
 import {Header} from '@/components/header';
 
-export function Layout() {
+export const Layout = () => {
   return (
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
@@ -18,4 +18,4 @@ export function Layout() {
       </div>
     </>
   );
-}
+};

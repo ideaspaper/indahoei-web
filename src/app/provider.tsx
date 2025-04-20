@@ -4,11 +4,7 @@ import {ReactNode, Suspense} from 'react';
 import {ThemeProvider} from '@/app/contexts/theme-context';
 import {Spinner} from '@/components/spinner';
 
-type AppProviderProps = {
-  children: ReactNode;
-};
-
-export const AppProvider = ({children}: AppProviderProps) => {
+export const AppProvider = ({children}: {children: ReactNode}) => {
   return (
     <Suspense
       fallback={

@@ -1,12 +1,12 @@
 import {useId} from 'react';
 
-export function Section({
+export const Section = ({
   title,
   children,
 }: {
   title: string;
   children: React.ReactNode;
-}) {
+}) => {
   const id = useId();
 
   return (
@@ -25,4 +25,4 @@ export function Section({
       </div>
     </section>
   );
-}
+};

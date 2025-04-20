@@ -3,7 +3,13 @@ import {Link} from 'react-router';
 import {ContainerInner, ContainerOuter} from '@/components/container';
 import {APP_PATH_MAP} from '@/config/paths';
 
-function NavLink({href, children}: {href: string; children: React.ReactNode}) {
+const NavLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => {
   return (
     <Link
       to={href}
@@ -12,9 +18,9 @@ function NavLink({href, children}: {href: string; children: React.ReactNode}) {
       {children}
     </Link>
   );
-}
+};
 
-export function Footer() {
+export const Footer = () => {
   return (
     <footer className="mt-32 flex-none">
       <ContainerOuter>
@@ -41,4 +47,4 @@ export function Footer() {
       </ContainerOuter>
     </footer>
   );
-}
+};
